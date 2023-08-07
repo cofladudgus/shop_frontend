@@ -1,0 +1,74 @@
+{
+  "name": "shopping-mall-system-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build:local": "cross-env ANALYZE=true env-cmd -f .env.local next build",
+    "build:dev": "env-cmd -f .env.development next build",
+    "build:prod": "env-cmd -f .env.production next build",
+    "start:dev": "env-cmd -f .env.development next start",
+    "start:prod": "env-cmd -f .env.production next start",
+    "lint": "prettier pages components --write && eslint pages components --fix",
+    "openapi:local": "openapi-generator-cli generate --reserved-words-mappings delete=delete -g typescript-axios -i http://localhost:8080/v3/api-docs -o ./generated -c ./openapi.json --skip-validate-spec",
+    "openapi:dev": "openapi-generator-cli generate --reserved-words-mappings delete=delete -g typescript-axios -i http://localhost:8080/v3/api-docs -o ./generated -c ./openapi.json --skip-validate-spec",
+    "openapi:prod": "openapi-generator-cli generate --reserved-words-mappings delete=delete -g typescript-axios -i http://localhost:8080/v3/api-docs -o ./generated -c ./openapi.json --skip-validate-spec"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
+  },
+  "dependencies": {
+    "@heroicons/react": "v1",
+    "@hookform/resolvers": "^3.1.1",
+    "@next/bundle-analyzer": "^13.4.12",
+    "@tanstack/react-query": "^4.32.1",
+    "@tanstack/react-query-devtools": "^4.32.1",
+    "@types/node": "20.4.5",
+    "@types/react": "18.2.18",
+    "@types/react-dom": "18.2.7",
+    "autoprefixer": "^10.4.14",
+    "axios": "^1.4.0",
+    "cross-env": "^7.0.3",
+    "dayjs": "^1.11.9",
+    "env-cmd": "^10.1.0",
+    "eslint": "^8.0.1",
+    "eslint-config-next": "13.4.12",
+    "i18next": "^23.4.1",
+    "immer": "^10.0.2",
+    "next": "13.4.12",
+    "next-auth": "^4.20.1",
+    "postcss": "^8.4.27",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-hook-form": "^7.45.2",
+    "react-i18next": "^13.0.3",
+    "tailwindcss": "^3.3.3",
+    "typescript": "*",
+    "yup": "^1.2.0",
+    "zustand": "^4.4.0"
+  },
+  "devDependencies": {
+    "@openapitools/openapi-generator-cli": "^2.7.0",
+    "@typescript-eslint/eslint-plugin": "^5.52.0",
+    "@typescript-eslint/parser": "^6.2.1",
+    "eslint-config-prettier": "^8.9.0",
+    "eslint-config-standard-with-typescript": "^37.0.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-n": "^15.0.0 || ^16.0.0 ",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.33.1",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.3",
+    "prettier": "^3.0.0",
+    "sass": "^1.64.2"
+  }
+}
